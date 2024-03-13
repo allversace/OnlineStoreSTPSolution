@@ -1,0 +1,112 @@
+﻿<Window x:Class="OnlineStoreSTP.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:OnlineStoreSTP.ViewModels" 
+        mc:Ignorable="d"
+        Title="application" Height="550" Width="1000" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <TabControl Grid.Row="0" SelectedItem="{Binding SelectedTabItem}">
+            <TabItem Name="ManagerTab">
+                <TabItem.Header>
+                    <TextBlock Text="Менджеры" FontSize="20"/>
+                </TabItem.Header>
+                <TabItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Редактировать" Command="{Binding OpenEditItem}"/>
+                        <MenuItem Header="Удалить" Command="{Binding DeleteItem}"/>
+                        <MenuItem Header="Клиенты менеджера" Command="{Binding OpenSearchItem}"/>
+                    </ContextMenu>
+                </TabItem.ContextMenu>
+                <ListView SelectedItem="{Binding SelectedManager}" FontSize="16" Name="AllManagersView" ItemsSource="{Binding AllManagers}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Номер менеджера" DisplayMemberBinding="{Binding Path=ManagerId}"/>
+                            <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Path=Name}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Name="ClientTab">
+                <TabItem.Header>
+                    <TextBlock Text="Клиенты" FontSize="20"/>
+                </TabItem.Header>
+                <TabItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Редактировать" Command="{Binding OpenEditItem}"/>
+                        <MenuItem Header="Удалить" Command="{Binding DeleteItem}"/>
+                        <MenuItem Header="Товары клиента" Command="{Binding OpenSearchItem}"/>
+                    </ContextMenu>
+                </TabItem.ContextMenu>
+                <ListView SelectedItem="{Binding SelectedClient}" FontSize="16" Name="AllClientsView" ItemsSource="{Binding AllClients}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Номер клиента" DisplayMemberBinding="{Binding Path=ClientId}"/>
+                            <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Path=Name}"/>
+                            <GridViewColumn Header="Товар клиента" DisplayMemberBinding="{Binding Path=Product.Name}"/>
+                            <GridViewColumn Header="Статус" DisplayMemberBinding="{Binding Path=ClientStatus.Name}"/>
+                            <GridViewColumn Header="Курирующий менеджер" DisplayMemberBinding="{Binding Path=Manager.Name}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Name="ProductTab">
+                <TabItem.Header>
+                    <TextBlock Text="Товары" FontSize="20"/>
+                </TabItem.Header>
+                <TabItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Редактировать" Command="{Binding OpenEditItem}"/>
+                        <MenuItem Header="Удалить" Command="{Binding DeleteItem}"/>
+                    </ContextMenu>
+                </TabItem.ContextMenu>
+                <ListView SelectedItem="{Binding SelectedProduct}" FontSize="16" Name="AllProductView" ItemsSource="{Binding AllProducts}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Номер товара" DisplayMemberBinding="{Binding Path=ProductId}"/>
+                            <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Path=Name}"/>
+                            <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Path=Price}"/>
+                            <GridViewColumn Header="Тип" DisplayMemberBinding="{Binding Path=Type}"/>
+                            <GridViewColumn Header="Срок подписки" DisplayMemberBinding="{Binding Path=SubscriptionPeriod}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Name="StatusClientTab">
+                <TabItem.Header>
+                    <TextBlock Text="Статусы клиентов" FontSize="20"/>
+                </TabItem.Header>
+                <TabItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Клиенты по статусу" Command="{Binding OpenSearchItem}"/>
+                    </ContextMenu>
+                </TabItem.ContextMenu>
+                <ListView SelectedItem="{Binding SelectedClientStatus}" FontSize="16" Name="StatusClientView" ItemsSource="{Binding AllClientStatus}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Номер статуса" DisplayMemberBinding="{Binding Path=StatusId}"/>
+                            <GridViewColumn Header="Статус" DisplayMemberBinding="{Binding Path=Name}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Name="CloseTab" Margin="444,-3,-448,1">
+                <TabItem.Header>
+                    <Button Content="Закрыть" FontSize="20" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click"/>
+                </TabItem.Header>
+            </TabItem>
+        </TabControl>
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <Button Content="Новый менеджер" Width="170" Margin="0,0,10,0" FontSize="20" Command="{Binding OpenAddNewManager}"/>
+            <Button Content="Новый клиент" Width="170" Margin="0,0,10,0" FontSize="20" Command="{Binding OpenAddNewClient}"/>
+            <Button Content="Новый товар" Width="170" Margin="0,0,10,0" FontSize="20" Command="{Binding OpenAddNewProduct}"/>
+        </StackPanel>
+    </Grid>
+</Window>

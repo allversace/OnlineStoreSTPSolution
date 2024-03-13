@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3fc9d38258df4be4aab3ca9f06be69e3" Name="Diagram1">
+        <EntityTypeShape EntityType="SoftTradePlusModel.Client" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoftTradePlusModel.ClientStatus" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoftTradePlusModel.Manager" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoftTradePlusModel.Product" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoftTradePlusModel.sysdiagrams" Width="1.5" PointX="5.625" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="SoftTradePlusModel.FK__Client__ManagerI__30C33EC3" ManuallyRouted="false" />
+        <AssociationConnector Association="SoftTradePlusModel.FK__Client__ProductI__2EDAF651" ManuallyRouted="false" />
+        <AssociationConnector Association="SoftTradePlusModel.FK__Client__StatusId__2FCF1A8A" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

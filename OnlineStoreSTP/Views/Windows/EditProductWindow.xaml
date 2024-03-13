@@ -1,0 +1,29 @@
+﻿<Window x:Class="OnlineStoreSTP.Views.Windows.EditProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OnlineStoreSTP.Views.Windows"
+        mc:Ignorable="d"
+        Title="Редактирование товара" Height="300" Width="300" WindowStartupLocation="CenterScreen" Name="AddNewProductWnd">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
+            <TextBlock FontSize="20" Text="Название"/>
+            <TextBox Text="{Binding ProductName}" PreviewTextInput="TextBox_PreviewTextInputABC" FontSize="20"/>
+
+            <TextBlock FontSize="20" Text="Цена"/>
+            <TextBox Text="{Binding Price}" PreviewKeyDown="TextBox_PreviewKeyDown" PreviewTextInput="TextBox_PreviewTextInputNumber" FontSize="20"/>
+
+            <TextBlock FontSize="20" Text="Тип"/>
+            <TextBox Text="{Binding Type}" PreviewTextInput="TextBox_PreviewTextInputABC" FontSize="20"/>
+
+            <TextBlock FontSize="20" Text="Срок подписки"/>
+            <TextBox Text="{Binding SubPeriod}" PreviewTextInput="TextBox_PreviewTextInputABC" FontSize="20"/>
+        </StackPanel>
+        <Button Grid.Row="1" FontSize="20" Content="Добавить" Command="{Binding EditProduct}" CommandParameter="{Binding ElementName=AddNewProductWnd}"/>
+    </Grid>
+</Window>
